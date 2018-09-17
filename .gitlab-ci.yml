@@ -1,3 +1,5 @@
+image: "smblott/dcu-docker-gitlab-ci"
+
 testA0:
   script:
     - "django-admin --version"
