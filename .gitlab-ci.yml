@@ -5,5 +5,5 @@ testA0:
     - "django-admin --version"
     - "echo ok checking submission for A0"
     - "echo running python django test"
-    - "cd src; python3 manage.py test eatatdcu"
+    - "cd src/ca377; python3 manage.py test eatatdcu"
     - "echo finished A0 submission checks"
