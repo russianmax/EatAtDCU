@@ -20,11 +20,5 @@ class A0Tests(TestCase):
       self.assertEqual(response.status_code, 200)
       self.assertContains(response, "No restaurants found")
 
-    def test_index_restaurants(self):
-      """
-      The index page refers to the restaurants 
-      """
-      response = self.client.get(reverse('eatatdcu:index'))
-      self.assertContains(response, "Restaurants")
 
 
