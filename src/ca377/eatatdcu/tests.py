@@ -6,7 +6,7 @@ class A0Tests(TestCase):
    
     def test_welcome(self):
       """
-      An appropriate welcome message is displayed once the page is loaded
+      The index page loads and an appropriate welcome message is displayed
       """
       response = self.client.get(reverse('eatatdcu:index'))
       self.assertEqual(response.status_code, 200)
@@ -14,7 +14,7 @@ class A0Tests(TestCase):
 
     def test_restaurants(self):
       """
-      An appropriate message is displayed once the restaurants page is loaded
+      The restaurants page loads and an appropriate message is displayed
       """
       response = self.client.get(reverse('eatatdcu:restaurants'))
       self.assertEqual(response.status_code, 200)
