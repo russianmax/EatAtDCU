@@ -17,5 +17,4 @@ with open('../../data/restaurant.csv') as re:
                time(hour=int(opening[0]),minute=int(opening[1])),
                time(hour=int(closing[0]),minute=int(closing[1])),
                int(row[6]))
-               )
        restaurant.save()
