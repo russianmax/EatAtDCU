@@ -5,8 +5,6 @@ from django.template import loader
 def index(request):
     template = loader.get_template('eatatdcu/index.html')
     return HttpResponse(template.render({},request))
-def restaurants(request):
-   return render(request, 'eatatdcu/restaurants.html')
 
 def restaurants(request):
     template = loader.get_template('eatatdcu/restaurants.html')
