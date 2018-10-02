@@ -8,3 +8,6 @@ def index(request):
 def restaurants(request):
    return render(request, 'eatatdcu/restaurants.html')
 
+def restaurants(request):
+    template = loader.get_template('eatatdcu/restaurants.html')
+    return HttpResponse(template.render({},request))
