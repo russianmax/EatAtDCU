@@ -1,2 +1,6 @@
-No restaurants found
+{% for x in results %}
 
+        {{x.name}} , {{x.location}}
+        <br>
+
+    {% endfor %}
