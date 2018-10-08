@@ -4,12 +4,12 @@ from django.template import loader
 from eatatdcu.models import Restaurant, Campus
 
 def index(request):
-    return render(request, 'eatatdcu/index.html')
+    template = loader.get_template('eatatdcu/index.html')
+    return HttpResponse(template.render({},request))
 
 def restaurants(request):
-    query = request.GET.get('search', None)
-    context = {}
-    if query and request.method == 'GET':
-        results = Restaurant.objects.filter(campus_id_id=query)
-        context.update({'results': results})
-        return render(request, 'eatatdcu/restaurants.html', context)
+   template = loader.get_template('eatatdcu/restaurants.html')
+   query = request.GET.get('search')
+   results = Restaurant.objects.filter(campus_id__name__icontains=query)
+   return HttpResponse(template.render({'results': results}, request ))
+
