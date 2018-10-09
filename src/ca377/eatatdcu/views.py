@@ -9,7 +9,10 @@ def index(request):
 
 def restaurants(request):
    template = loader.get_template('eatatdcu/restaurants.html')
-   query = request.GET.get('search')
-   results = Restaurant.objects.filter(campus_id__name__icontains=query)
+   campus = str(request.GET.get('campus'))
+   results = Restaurant.objects.filter(campus_id__name__contains=campus)
+   if len(results) == 0:
+       #return HttpResponse('OK')
+       return HttpResponse(template.render({'error_msg': 'nothing found for ' + campus}, request))
    return HttpResponse(template.render({'results': results}, request ))
 
