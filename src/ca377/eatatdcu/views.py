@@ -10,8 +10,8 @@ def index(request):
 def restaurants(request):
    template = loader.get_template('eatatdcu/restaurants.html')
    campus = str(request.GET.get('campus'))
-   results = Restaurant.objects.filter(campus_id__name=campus)
-   campuslist = Campus.objects.filter(name=campus)
+   results = Restaurant.objects.filter(campus_id__name__iexact=campus)
+   campuslist = Campus.objects.filter(name__iexact=campus)
    if len(campuslist) == 0:
        return HttpResponse('No such campus')
    if len(results) == 0:
