@@ -1,10 +1,32 @@
-
+{% if results|length > 1 %}
+Restaurants
+<br></br>
+{% endif %}
 {% for x in results %}
- <li>
- {{x.name}}, 
- {{x.location}}
- {% if x.is_staff is True %}
-	(staff only!)
- {% endif %}
- </li>
+	{% if x.is_restaurant is True %}
+		<li>
+		{{x.name}}, 
+		{{x.location}}
+		{% if x.is_staff is True %}
+			(staff only!)
+		{% endif %}
+	{% endif %}
+	</li>
 {% endfor %}
+<br>
+Cafes
+<br></br>
+{% for x in results %}
+	{% if x.is_restaurant is False %}
+		<li>
+		{{x.name}}, 
+		{{x.location}}
+		{% if x.is_staff is True %}
+			(staff only!)
+		{% endif %}
+	{% endif %}
+	</li>
+{% endfor %}
+
+
+
