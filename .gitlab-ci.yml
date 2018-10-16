@@ -1,5 +1,13 @@
 image: "smblott/dcu-docker-gitlab-ci"
 
+testA2:
+  script:
+    - "django-admin --version"
+    - "echo ok checking submission for A2"
+    - "echo running python django test"
+    - "cd src/ca377; python3 manage.py test eatatdcu"
+    - "echo finished A2 submission checks"
+
 #testA0:
 #  script:
 #    - "django-admin --version"
