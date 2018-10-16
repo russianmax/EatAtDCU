@@ -8,6 +8,8 @@ def index(request):
     return HttpResponse(template.render({},request))
 
 def restaurants(request):
+   norestaurants = {'error_msg':'No restaurants found'}
+   nocampus = {'error_msg' : 'No campus found'}
    template = loader.get_template('eatatdcu/restaurants.html')
    campus = str(request.GET.get('campus'))
    results = Restaurant.objects.filter(campus_id__name__iexact=campus)
