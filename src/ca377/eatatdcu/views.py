@@ -26,11 +26,9 @@ def restaurants(request):
 
 def specials(request,restaurant):
     template = loader.get_template('eatatdcu/specials.html')
-    restaurant_name = request.GET.get('restaurant', '')
-    restaurant_special = 'http://jfoster.pythonanywhere.com/specials/'+ restaurant_name
-    info = requests.get(restaurant_special)
-    return HttpResponse(template.render(info.json(), request))
-
+    response = requests.get('http://jfoster.pythonanywhere.com/specials/' + restaurant)
+    json_data = json.loads(response.text)
+    return HttpResponse(template.render(json_data))
 
 
     # call the web service to get the daily special for "restaurant"

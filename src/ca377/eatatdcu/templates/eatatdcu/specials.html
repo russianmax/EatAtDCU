@@ -1,2 +1,13 @@
 {% block content %}
+{% if not restaurant_name %}
+     Restaurant name {{ request.path }} is unknown
+{% endif %}
+{% if restaurant_name %}
+	<h3> Daily specials </h3>
+	<li>Restaurant name: {{ restaurant_name }}</li>
+	<li>Date: {{ date }}</li>
+	<li>Special: {{ daily_special }}</li>
+{% endif %}
 {% endblock %}
+
+
