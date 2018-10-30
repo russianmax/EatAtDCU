@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from .models import Restaurant,Campus
+import json,requests
 
 def index(request):
     template = loader.get_template('eatatdcu/index.html')
@@ -22,8 +23,12 @@ def restaurants(request):
 
 def specials(request,restaurant):
     template = loader.get_template('eatatdcu/specials.html')
+    webservice_url = 'http://jfoster.pythonanywhere.com/specials/'+restaurant
 
-    # call the web service to get the daily special for "restaurant"
+    real_time_info = requests.get(webservice_url).json()
 
-    # pass the information returned by the web service into the "specials.html" template
+    if 'error_msg' in real_time_info:
+       return HttpResponse(template.render({'error':real_time_info['error_msg']},request))
+    else:
+       return HttpResponse(template.render(real_time_info,request))
 
