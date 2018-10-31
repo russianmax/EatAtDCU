@@ -1,13 +1,7 @@
-{% block content %}
-{% if not restaurant_name %}
-     Restaurant name is unknown
+{% if error %}
+   <b>An error has occurred</b>: {{ error }}
+{% else %}
+   <b> Restaurant name: </b> {{restaurant_name }}<br>
+   <b>Daily special: </b>{{ daily_special }} <br>
+   <b>Date: </b> ({{ date }})
 {% endif %}
-{% if restaurant_name %}
-	<h3> Daily specials </h3>
-	<li>Restaurant name: {{ restaurant_name }}</li>
-	<li>Date: {{ date }}</li>
-	<li>Special: {{ daily_special }}</li>
-{% endif %}
-{% endblock %}
-
-

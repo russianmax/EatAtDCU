@@ -17,7 +17,9 @@ class Restaurant(models.Model):
    capacity = models.IntegerField()
    is_staff_only = models.BooleanField(default=False)
    is_restaurant = models.BooleanField(default=False)
-
+   is_open_wknd = models.BooleanField(default=False)
+   opening_hours_wknd = models.TimeField(default='9:00')
+   closing_hours_wknd = models.TimeField(default='18:00')
    def __str__(self):
       return self.name
 
