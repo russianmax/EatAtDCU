@@ -1,3 +1,4 @@
+#test
 import csv
 from datetime import time
 from eatatdcu.models import Campus, Restaurant
