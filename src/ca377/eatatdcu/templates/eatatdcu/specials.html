@@ -1,3 +1,7 @@
+{% extends "eatatdcu/template.html" %}
+
+
+{% block content %}
 {% if error %}
    <b>An error has occurred</b>: {{ error }}
 {% else %}
@@ -5,3 +9,4 @@
    <b>Daily special: </b>{{ daily_special }} <br>
    <b>Date: </b> ({{ date }})
 {% endif %}
+{% endblock %}

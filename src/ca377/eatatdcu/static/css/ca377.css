@@ -1,0 +1,109 @@
+body {
+	background-color: ##E6E6E6;
+}
+
+h1 {
+    text-shadow: 5px 3px 0  black;
+}
+
+h2 {
+	margin: 25;
+}
+
+h3 {
+	margin: 25:
+}
+p {
+	margin: 25;
+}
+
+img.home{
+    margin-left: 25;
+    margin-right: 25;
+}
+
+img.location{
+    margin-left: 25;
+    margin-right: 25;
+    position: absolute;
+    height: 240;
+    width: 400;
+}
+
+
+div.container {
+    position: relative;
+    text-align: center;
+    color: white;
+    margin-left: 0;
+    margin-right: 50;
+}
+	
+
+div.centered {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    font-size: 30;
+    transform: translate(-50%, -50%);
+} 
+
+	
+ul {
+    bottom: 50%;
+    padding-bottom: 50;
+}
+
+li { 
+   list-style: none;  
+   padding-left:420px;
+  
+}
+
+ul.navbar {
+    list-style-type: none;
+    margin-left: 25;
+    margin-right: 25;
+    margin-bottom: 25;
+    padding: 0;
+    overflow: hidden;
+    background-color: #4F868E;
+}
+
+li.navbar {
+    float: right;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+li.navbar a {
+    display: block;
+    color: white;
+    text-align: left;
+    text-decoration: none;
+    margin-top: 35;
+}
+
+.container .btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #f1f1f1;
+    color: black;
+    font-size: 16px;
+    padding: 16px 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.container .btn:hover {
+    background-color: black;
+    color: white;
+}
+
+
+

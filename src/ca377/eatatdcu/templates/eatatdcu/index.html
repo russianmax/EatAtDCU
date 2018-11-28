@@ -1,6 +1,13 @@
-<h1>Eat at DCU!</h1>
-<form action="{% url 'eatatdcu:restaurants'  %}" method="get">
-Campus: <input type="text" name="campus"><br>
-<input type="submit" value = "Go">
-</form>
+{% extends "eatatdcu/template.html" %}
 
+
+{% block content %}
+ <div class="container">
+  <img class="home" src="static/img/dcureal.gif" alt="DCU homepage" style="width:100%; height:85%" >
+  <div class="centered"><h1> EAT at DCU</h4></h1><form action="{% url 'eatatdcu:restaurants'  %}" method="get">
+  <input type="text" required placeholder="campus name" name="campus"><input type="submit" value = "Go">
+  </form></div> 
+
+
+{% endblock %}
+		

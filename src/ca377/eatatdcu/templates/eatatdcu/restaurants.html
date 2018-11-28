@@ -1,30 +1,53 @@
+{% extends "eatatdcu/template.html" %}
+
+
+{% block content %}
+
+
 {% if error %}
-   {{ error }}
+   <p>{{ error }}</p>
 {% else %}
-   <h3>Restaurants</h3>
+   <h2>Restaurants </h2>
    {% if restaurants %}
       {% for r in restaurants %}
-         <li>{{ r.name}}, {{r.location}} 
-         <b>Opening hours:</b> {{ r.opening_hours }}  - {{r.closing_hours}}
-          {% if r.is_staff_only %} (staff only!) {% endif %}
-	      {%if r.is_open_wknd %} ( open on weekends: {{r.opening_hours_wknd}} - {{r.closing_hours_wknd}} ) {%else%} ( closed on weekends )  {% endif %}
-	      <a href="{% url 'eatatdcu:specials' restaurant=r.name %}">Specials</a>
-         </li>
+	      <p><b>{{ r.name}} </b> {% if r.is_staff_only %} (staff only!) {% endif %} <a href="{% url 'eatatdcu:specials' restaurant=r.name %}">Specials</a></p>
+	      <p>Location: <b>{{r.location}} </b></p>
+	      <img class="location" src="static/img/{{r.name}}" alt="{{r.name}}"><br></br>
+
+	      <ul>
+          <li>Opening hours: Monday: {{ r.opening_hours }}  - {{r.closing_hours}}</li>
+          <li>Tuesday: {{ r.opening_hours }}  - {{r.closing_hours}}</li>
+          <li>Wednesday: {{ r.opening_hours }}  - {{r.closing_hours}}</li>
+          <li>Thursday:  {{ r.opening_hours }}  - {{r.closing_hours}}</li>
+          <li>Friday: {{ r.opening_hours }}  - {{r.closing_hours}}</li>
+	      <li>{%if r.is_open_wknd %} : {{r.opening_hours_wknd}} - {{r.closing_hours_wknd}} ) 
+	      <li>{%else%} Saturday: closed</li>
+	      <li> Sunday: closed  {% endif %}</li><br></br>	
+		  </ul>
       {% endfor %}
    {% else %}
-      No restaurants found
+		<p>No restaurant found</p>
    {% endif %}
-
-   <h3>Cafes</h3>
+   <h2>Cafes</h2>
    {% if cafes %}
       {% for c in cafes %}
-         <li>{{ c.name}}, {{c.location}}, <b>Opening hours:</b> {{ c.opening_hours }} - {{ c.closing_hours}} 
-         {%if c.is_open_wknd %} ( open on weekends: {{c.opening_hours_wknd}} - {{c.closing_hours_wknd}} ) {%else%} ( closed on weekends ) {% endif  %}
-         {% if c.is_staff_only %} (staff only!) {% endif %}
-         </li>
+	  <p><b>{{ c.name}} {% if c.is_staff_only %} (staff only!) {% endif %}</b></p>                 
+	  <p>Location:   <b>{{c.location}} </b></p>
+	  <img class="location" src="static/img/{{c.name}}" alt="{{c.name}}"><br></br>
+	  <ul>
+	  <li>Opening hours: Monday {{ c.opening_hours }} - {{ c.closing_hours}}</li>
+	  <li>Tuesday {{ c.opening_hours }} - {{ c.closing_hours}}</li> 
+	  <li>Wednesday{{ c.opening_hours }} - {{ c.closing_hours}}</li>
+      <li>Thursday {{ c.opening_hours }} - {{ c.closing_hours}}</li>
+      <li>Friday {{ c.opening_hours }} - {{ c.closing_hours}}</li>   
+      <li>{%if c.is_open_wknd %} Saturday: {{c.opening_hours_wknd}} - {{c.closing_hours_wknd}}</li>
+	  <li>Sunday: {{c.opening_hours_wknd}} - {{c.closing_hours_wknd}}</li>
+      <li>{%else%} Saturday: closed</li>
+      <li> Sunday: closed  {% endif  %}</li>
+	  </ul>
       {% endfor %}
    {% else %}
-      No cafes found
+      <p>No cafes found</p>	
    {% endif %}
 {% endif %}
-
+{% endblock %}
