@@ -65,6 +65,7 @@ ul.navbar {
     margin-left: 25;
     margin-right: 25;
     margin-bottom: 25;
+    margin-top: 0;
     padding: 0;
     overflow: hidden;
     background-color: #4F868E;
@@ -84,26 +85,6 @@ li.navbar a {
     margin-top: 35;
 }
 
-.container .btn {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    background-color: #f1f1f1;
-    color: black;
-    font-size: 16px;
-    padding: 16px 30px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    text-align: center;
-}
-
-.container .btn:hover {
-    background-color: black;
-    color: white;
-}
 
 
 

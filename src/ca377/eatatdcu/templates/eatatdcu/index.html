@@ -4,10 +4,17 @@
 {% block content %}
  <div class="container">
   <img class="home" src="static/img/dcureal.gif" alt="DCU homepage" style="width:100%; height:85%" >
-  <div class="centered"><h1> EAT at DCU</h4></h1><form action="{% url 'eatatdcu:restaurants'  %}" method="get">
-  <input type="text" required placeholder="campus name" name="campus"><input type="submit" value = "Go">
-  </form></div> 
-
+  <div class="centered"><h1> EAT at DCU</h4></h1>
+  <form action="{% url 'eatatdcu:restaurants'  %}" method="get">
+  <select name="campus">
+  <option value="glasnevin">Glasnevin</option>
+  <option value="st pats">St. Pats</option>
+  <option value="all hallows">All Hallows</option>
+  <option value="dcu alpha">DCU Alpha</option>
+  <input class="button 5" type="submit" value = "Go">
+  
+  
+  
 
 {% endblock %}
 		
