@@ -22,6 +22,8 @@ def restaurants(request):
         return HttpResponse(template.render({'error':'No such campus'},request))
     return HttpResponse(template.render({'restaurants':restaurants,'cafes':cafes},request))
 
+
+
 def specials(request,restaurant):
     template = loader.get_template('eatatdcu/specials.html')
     webservice_url = 'http://jfoster.pythonanywhere.com/specials/'+restaurant
@@ -31,4 +33,7 @@ def specials(request,restaurant):
     else:
        return HttpResponse(template.render(real_time_info,request))
 
+def test(request):
+    template = loader.get_template('eatatdcu/test.html')
+    return HttpResponse(template.render({},request))
 

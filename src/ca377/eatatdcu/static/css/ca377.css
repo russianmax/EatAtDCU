@@ -10,11 +10,14 @@ h2 {
 	margin: 25;
 }
 
+
+
 h3 {
 	margin: 25:
 }
 p {
 	margin: 25;
+
 }
 
 img.home{
@@ -64,8 +67,7 @@ ul.navbar {
     list-style-type: none;
     margin-left: 25;
     margin-right: 25;
-    margin-bottom: 25;
-    margin-top: 0;
+   
     padding: 0;
     overflow: hidden;
     background-color: #4F868E;
@@ -73,6 +75,7 @@ ul.navbar {
 
 li.navbar {
     float: right;
+	font-size: 25;
     padding-left: 25px;
     padding-right: 25px;
 }
@@ -88,3 +91,30 @@ li.navbar a {
 
 
 
+.button1 {
+	pointer: cursor;
+    margin: 15;
+	padding: 15;
+	font-size: 20;
+	color: black;
+	background-color: white;
+	border: none;
+	border-radius: 50%;
+
+}
+
+
+select {
+    width: 100%;
+    padding: 10;
+	border: none;
+	font-weight: bold;
+    border-radius: 4px;
+	
+    background-color: #f1f1f1;
+}
+
+.test {
+	padding: 250;
+	right: 25;
+}
