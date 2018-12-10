@@ -1,12 +1,12 @@
 {% extends "eatatdcu/template.html" %}
 
 {% block content %}
-
 {% if error %}
    <b>An error has occurred</b>: {{ error }}
 {% else %}
-   Name: {{restaurant_name }}<br>
-   Daily special: {{ daily_special }}<br> 
-   Date: {{ date }}
+    <p>Today's special in  the  <b>{{restaurant_name }}</b>  is: <b>{{ daily_special }}</b></p>
+    
+    {% load staticfiles %}
+    <img class="specials" src="/static/img/specials/{{ daily_special }}" alt="{{ daily_special }}"><br></br>
 {% endif %}
 {% endblock %}
