@@ -21,5 +21,6 @@ with open('../../data/restaurant.csv') as re:
                time(hour=int(closing[0]),minute=int(closing[1])),
                int(row[6]),int(row[7]),int(row[8]),int(row[9]),
  	       time(hour=int(opening_wknd[0]),minute=int(opening_wknd[1])),
-               time(hour=int(closing_wknd[0]),minute=int(closing_wknd[1])))	  
+               time(hour=int(closing_wknd[0]),minute=int(closing_wknd[1])),
+	       int(row[12]),int(row[13])) 
        restaurant.save()

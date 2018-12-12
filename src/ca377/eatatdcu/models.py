@@ -20,6 +20,8 @@ class Restaurant(models.Model):
    is_open_wknd = models.BooleanField(default=False)
    opening_hours_wknd = models.TimeField(default='9:00')
    closing_hours_wknd = models.TimeField(default='18:00')
+   avg_rating = models.IntegerField()
+   max_rating = models.IntegerField()
    def __str__(self):
       return self.name
 

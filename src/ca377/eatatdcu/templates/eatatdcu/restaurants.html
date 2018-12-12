@@ -2,6 +2,7 @@
 
 
 {% block content %}
+{% load staticfiles %} 
 
 <h2>Restaurants </h2>
 	{% if request.get_full_path == "/restaurants?campus=glasnevin&staff_only=on&weekend=on" or request.get_full_path == "/restaurants?campus=st+pats&staff_only=on&weekend=on" %}
@@ -23,7 +24,10 @@
 		{% for r in restaurants %}
 			{% if r.is_staff_only %}
 				 <p><b>{{ r.name}}</b> located in <b>{{r.location}} </b> {% if r.is_staff_only %} (staff only!) {% endif %}</p>
-				 <p><a href="{% url 'eatatdcu:specials' restaurant=r.name %}">Specials</a></p>
+				 <p>{% if r.avg_rating == 0%}</p>
+		         <p> No rating yet <img class="ratings" src="static/img/ratings/{{r.avg_rating}}" alt="{{r.avg_rating}}"> {%else%}</p>
+		         <p>{{r.avg_rating}} rating out of {{r.max_rating}} {% endif %} </p>
+		         <p><a href="{% url 'eatatdcu:specials' restaurant=r.name %}" class="button">Click here to view todays Special</a></p>
 	             <img class="location" src="static/img/maps/{{r.name}}" alt="{{r.name}}">
 	             <ul>
                  <li><strong>Opening hours:</strong> Monday: {{ r.opening_hours }}  - {{r.closing_hours}}</li>
@@ -40,6 +44,9 @@
 		{% if restaurants %}
 			{% for r in restaurants %}
 		         <p><b>{{ r.name}}</b> located in <b>{{r.location}} </b> {% if r.is_staff_only %} (staff only!) {% endif %}</p>
+		         <p>{% if r.avg_rating == 0%}</p>
+		         <p> No rating yet <img class="ratings" src="static/img/ratings/{{r.avg_rating}}" alt="{{r.avg_rating}}"> {%else%}</p>
+		         <p>{{r.avg_rating}} rating out of {{r.max_rating}} <img class="ratings" src="static/img/ratings/{{r.avg_rating}}" alt="{{r.avg_rating}}"> {% endif %} </p>
 		         <p><a href="{% url 'eatatdcu:specials' restaurant=r.name %}" class="button">Click here to view todays Special</a></p>
 	             <img class="location" src="static/img/maps/{{r.name}}" alt="{{r.name}}">
 	             <ul>
@@ -83,6 +90,9 @@
 			{% for c in cafes %}
 				{% if c.is_open_wknd %}  
 					<p>Name: <b>{{ c.name}}</b> located in <b>{{c.location}}</b> {% if c.is_staff_only %} (staff only!) {% endif %}              
+					<p>{% if c.avg_rating == 0%}</p>
+					<p> No rating yet <img class="ratings" src="static/img/ratings/{{c.avg_rating}}" alt="{{c.avg_rating}}"> {%else%}</p>
+					<p>{{c.avg_rating}} rating out of {{c.max_rating}} <img class="ratings" src="static/img/ratings/{{c.avg_rating}}" alt="{{c.avg_rating}}"> {% endif %} </p>
 					<img class="location" src="static/img/maps/{{c.name}}" alt="{{c.name}}">
 					<ul>
 					<li><strong>Opening hours:</strong> Monday {{ c.opening_hours }} - {{ c.closing_hours}}</li>
@@ -115,6 +125,9 @@
 			{% if cafes %}
 				{% for c in cafes %}
 					<p><b>{{ c.name}}</b> located in <b>{{c.location}} </b> {% if r.is_staff_only %} (staff only!) {% endif %}</p>
+					<p>{% if c.avg_rating == 0%}</p>
+		            <p> No rating yet <img class="ratings" src="static/img/ratings/{{c.avg_rating}}" alt="{{c.avg_rating}}"> {%else%}</p>
+		            <p>{{c.avg_rating}} rating out of {{c.max_rating}} <img class="ratings" src="static/img/ratings/{{c.avg_rating}}" alt="{{c.avg_rating}}"> {% endif %} </p>
 					<img class="location" src="static/img/maps/{{c.name}}" alt="{{c.name}}">
 					<ul>
 					<li><strong>Opening hours:</strong> Monday {{ c.opening_hours }} - {{ c.closing_hours}}</li>
