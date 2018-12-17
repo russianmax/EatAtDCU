@@ -103,5 +103,5 @@ python3/python manage.py test eatatdcu
 ```
 
 ## References
-Jennifer Foster, jennifer.foster@dcu.ie
+Jennifer Foster: jennifer.foster@dcu.ie
 Suzanne Little: suzanne.little@dcu.ie
