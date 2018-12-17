@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
+
 from .models import Restaurant,Campus
+
 import json,requests
-#api_key = 1aBSDNqdO0-_PC1U49G3aBjwM32lWnyjOP-SVNSG_1INVVBn-rwmTmMteEq3arvtrIGUFRfO_hPzv5onSFM8XHKUjOYZAjFhMLffZwnyYg1qJ8FceM_zeHPMdaAPXHYx
+
 
 def index(request):
     template = loader.get_template('eatatdcu/index.html')
@@ -23,7 +25,6 @@ def restaurants(request):
     return HttpResponse(template.render({'restaurants':restaurants,'cafes':cafes},request))
 
 
-
 def specials(request,restaurant):
     template = loader.get_template('eatatdcu/specials.html')
     webservice_url = 'http://jfoster.pythonanywhere.com/specials/'+restaurant
@@ -34,7 +35,4 @@ def specials(request,restaurant):
        return HttpResponse(template.render(real_time_info,request))
 
 
-def yelp(request):
-    template = loader.get_template('eatatdcu/yelp.html')
-    return HttpResponse(template.render({},request))
-	
+

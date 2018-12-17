@@ -4,6 +4,7 @@
 {% block content %}
 {% load staticfiles %} 
 
+
 <h2>Restaurants </h2>
 	{% if request.get_full_path == "/restaurants?campus=glasnevin&staff_only=on&weekend=on" or request.get_full_path == "/restaurants?campus=st+pats&staff_only=on&weekend=on" %}
 	<p>No restaurants found </p>
@@ -98,7 +99,7 @@
 					<li><strong>Opening hours:</strong> Monday {{ c.opening_hours }} - {{ c.closing_hours}}</li>
 					<div class="openingtimes">
 					<li>Tuesday {{ c.opening_hours }} - {{ c.closing_hours}}</li> 
-					<li>Wednesday{{ c.opening_hours }} - {{ c.closing_hours}}</li>
+					<li>Wednesday {{ c.opening_hours }} - {{ c.closing_hours}}</li>
 					<li>Thursday {{ c.opening_hours }} - {{ c.closing_hours}}</li>
 					<li>Friday {{ c.opening_hours }} - {{ c.closing_hours}}</li>   
 					<li>{%if c.is_open_wknd %} Saturday: {{c.opening_hours_wknd}} - {{c.closing_hours_wknd}}</li>
@@ -133,7 +134,7 @@
 					<li><strong>Opening hours:</strong> Monday {{ c.opening_hours }} - {{ c.closing_hours}}</li>
 					<div class="openingtimes">
 					<li>Tuesday {{ c.opening_hours }} - {{ c.closing_hours}}</li> 
-					<li>Wednesday{{ c.opening_hours }} - {{ c.closing_hours}}</li>
+					<li>Wednesday {{ c.opening_hours }} - {{ c.closing_hours}}</li>
 					<li>Thursday {{ c.opening_hours }} - {{ c.closing_hours}}</li>
 					<li>Friday {{ c.opening_hours }} - {{ c.closing_hours}}</li>   
 					<li>{%if c.is_open_wknd %} Saturday: {{c.opening_hours_wknd}} - {{c.closing_hours_wknd}}</li>

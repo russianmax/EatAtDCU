@@ -4,9 +4,21 @@
 {% if error %}
    <b>An error has occurred</b>: {{ error }}
 {% else %}
-    <p>Today's special in  the  <b>{{restaurant_name }}</b>  is: <b>{{ daily_special }}</b></p>
-    
+    <p>{{date}}</p>
+	
+	<p>Today's special in  the  <b>{{restaurant_name }}</b>  is: <b>{{ daily_special }}</b></p>
+
     {% load staticfiles %}
     <img class="specials" src="/static/img/specials/{{ daily_special }}" alt="{{ daily_special }}"><br></br>
 {% endif %}
+
+<div class="goback">
+<button  onclick="goBack()">Go back to the restaurants page</button>
+</div>
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+
 {% endblock %}

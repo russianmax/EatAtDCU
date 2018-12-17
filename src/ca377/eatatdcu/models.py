@@ -22,6 +22,7 @@ class Restaurant(models.Model):
    closing_hours_wknd = models.TimeField(default='18:00')
    avg_rating = models.IntegerField()
    max_rating = models.IntegerField()
+ 
    def __str__(self):
       return self.name
 
