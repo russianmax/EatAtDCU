@@ -1,41 +1,56 @@
+<!-- extending the template.html onto restaurants.html e.g. navbar, css -->
 {% extends "eatatdcu/template.html" %}
 
-
 {% block content %}
+<!-- loading static files e.g. css, images  -->
 {% load staticfiles %} 
 
 
 <h2>Restaurants </h2>
+	 <!-- if statement for Glasnevin weekend & staff only or St Pats weekend & staff only   -->
 	{% if request.get_full_path == "/restaurants?campus=glasnevin&staff_only=on&weekend=on" or request.get_full_path == "/restaurants?campus=st+pats&staff_only=on&weekend=on" %}
 	<p>No restaurants found </p>
 	{% else %}
+	<!-- if statement for St Pats weekend -->
 	{% if request.get_full_path == "/restaurants?campus=st+pats&weekend=on" %}
 	<p>No restaurants found </p>
 	{% else %}
+	<!-- if statement for St Pats staff only -->
 	{% if request.get_full_path == "/restaurants?campus=st+pats&staff_only=on" %}
 	<p>No restaurants found </p>
 	{% else %}
+	<!-- if statement for Glasnevin weekend -->
 	{% if request.get_full_path == "/restaurants?campus=glasnevin&weekend=on" %}
 	<p>No restaurants found </p>
 	{% else %} 
+	<!-- if restaurants count == 0 display 'No restaurants found' -->
 	{% if restaurants.count == 0 %}
 	<p> No restaurants found </p>
 	{% else %}
+	<!-- if statement for Glasnevin staff only -->
 	{% if request.get_full_path == "/restaurants?campus=glasnevin&staff_only=on" %}
+		<!-- for loop for restaurants -->
 		{% for r in restaurants %}
+		<!-- check if any restaurants is_staff only == True -->
 			{% if r.is_staff_only %}
+				<!-- display name, location, if is_staff only == True, display (staff only) beside location -->
 				 <p><b>{{ r.name}}</b> located in <b>{{r.location}} </b> {% if r.is_staff_only %} (staff only!) {% endif %}</p>
+				 <!-- if avg_rating == 0, display 'No rating yet' else display image based on rating  -->
 				 <p>{% if r.avg_rating == 0%}</p>
 		         <p> No rating yet <img class="ratings" src="static/img/ratings/{{r.avg_rating}}" alt="{{r.avg_rating}}"> {%else%}</p>
 		         <p>{{r.avg_rating}} rating out of {{r.max_rating}} {% endif %} </p>
+				 <!-- specials href -->
 		         <p><a href="{% url 'eatatdcu:specials' restaurant=r.name %}" class="button">Click here to view todays Special</a></p>
-	             <img class="location" src="static/img/maps/{{r.name}}" alt="{{r.name}}">
-	             <ul>
+	             <!-- display image based on name of restaurants ../{{r.name}} -->
+				 <img class="location" src="static/img/maps/{{r.name}}" alt="{{r.name}}">
+	             <!-- list of opening hours -->
+				 <ul>
                  <li><strong>Opening hours:</strong> Monday: {{ r.opening_hours }}  - {{r.closing_hours}}</li>
                  <li>Tuesday: {{ r.opening_hours }}  - {{r.closing_hours}}</li>
                  <li>Wednesday: {{ r.opening_hours }}  - {{r.closing_hours}}</li>
                  <li>Thursday:  {{ r.opening_hours }}  - {{r.closing_hours}}</li>
                  <li>Friday: {{ r.opening_hours }}  - {{r.closing_hours}}</li>
+				 <!-- red font if not open on weekends -->
 	             <li><font color="red">Saturday: closed</font></li>
 	             <li><font color="red">Sunday: closed </font> </li><br>	
 		         </ul>
@@ -43,20 +58,27 @@
 		{% endfor %}
 	{% else %}
 		{% if restaurants %}
+		<!-- for loop for restaurants -->
 			{% for r in restaurants %}
+				<!-- display name, location, if is_staff only == True, display (staff only) beside location -->
 		         <p><b>{{ r.name}}</b> located in <b>{{r.location}} </b> {% if r.is_staff_only %} (staff only!) {% endif %}</p>
+				  <!-- if avg_rating == 0, display 'No rating yet' else display image based on rating  -->
 		         <p>{% if r.avg_rating == 0%}</p>
 		         <p> No rating yet <img class="ratings" src="static/img/ratings/{{r.avg_rating}}" alt="{{r.avg_rating}}"> {%else%}</p>
 		         <p>{{r.avg_rating}} rating out of {{r.max_rating}} <img class="ratings" src="static/img/ratings/{{r.avg_rating}}" alt="{{r.avg_rating}}"> {% endif %} </p>
+				  <!-- specials href -->
 		         <p><a href="{% url 'eatatdcu:specials' restaurant=r.name %}" class="button">Click here to view todays Special</a></p>
+				  <!-- display image based on name of restaurants ../{{r.name}} -->
 	             <img class="location" src="static/img/maps/{{r.name}}" alt="{{r.name}}">
-	             <ul>
+	              <!-- list of opening hours -->
+				 <ul>
                  <li><strong>Opening hours:</strong> Monday: {{ r.opening_hours }}  - {{r.closing_hours}}</li>
                  <div class="openingtimes">
                  <li>Tuesday: {{ r.opening_hours }}  - {{r.closing_hours}}</li>
                  <li>Wednesday: {{ r.opening_hours }}  - {{r.closing_hours}}</li>
                  <li>Thursday:  {{ r.opening_hours }}  - {{r.closing_hours}}</li>
                  <li>Friday: {{ r.opening_hours }}  - {{r.closing_hours}}</li>
+				  <!-- red font if not open on weekends -->
 	             <li> <font color="red"> Saturday: closed </font> </li>
 	             <li> <font color="red">Sunday: closed</font></li>
 	             </div>	
@@ -71,39 +93,53 @@
 	{% endif %}
 	
 <h2>Cafes </h2>
+	<!-- if statement for DCU Alpha staff only & weekend -->
     {% if request.get_full_path == "/restaurants?campus=dcu+alpha&staff_only=on&weekend=on" %}
     <p>No cafes found</p>
     {% else %}
+	<!-- if statement for Glasnevin staff only % weekend or St Pats staff only and weekend -->
 	{% if request.get_full_path == "/restaurants?campus=glasnevin&staff_only=on&weekend=on" or request.get_full_path == "/restaurants?campus=st+pats&staff_only=on&weekend=on" %}
 	<p>No cafes found</p>
 	{% else %}
+	<!-- if statement for DCU Alpha weekend -->
 	{% if request.get_full_path == "/restaurants?campus=dcu+alpha&weekend=on" %}
 	<p>No cafes found</p>
 	{% else %}
+	<!-- if statement for DCU Alpha staff only -->
     {% if request.get_full_path == "/restaurants?campus=dcu+alpha&staff_only=on" %}
 	<p>No cafes found</p>
 	{% else %}
+	<!-- if statement for St Pats staff only -->
 	{% if request.get_full_path == "/restaurants?campus=st+pats&staff_only=on" %}
 	<p>No cafes found</p>
 	{% else %}
+	<!-- if statement for Glasnevin weekend -->
 	{% if request.get_full_path == "/restaurants?campus=glasnevin&weekend=on" %}
 		{% if cafes %}
+			<!-- for loop in cafes -->
 			{% for c in cafes %}
-				{% if c.is_open_wknd %}  
-					<p>Name: <b>{{ c.name}}</b> located in <b>{{c.location}}</b> {% if c.is_staff_only %} (staff only!) {% endif %}              
+				<!-- display results only if c.is_open_wknd == True -->
+				{% if c.is_open_wknd %}
+					<!-- display name, location, if is_staff only == True, display (staff only) beside location -->				
+					<p>Name: <b>{{ c.name}}</b> located in <b>{{c.location}}</b> {% if c.is_staff_only %} (staff only!) {% endif %}   
+					 <!-- if avg_rating == 0, display 'No rating yet' else display image based on rating  -->
 					<p>{% if c.avg_rating == 0%}</p>
 					<p> No rating yet <img class="ratings" src="static/img/ratings/{{c.avg_rating}}" alt="{{c.avg_rating}}"> {%else%}</p>
 					<p>{{c.avg_rating}} rating out of {{c.max_rating}} <img class="ratings" src="static/img/ratings/{{c.avg_rating}}" alt="{{c.avg_rating}}"> {% endif %} </p>
+					  <!-- display image based on name of cafe ../{{c.name}} -->
 					<img class="location" src="static/img/maps/{{c.name}}" alt="{{c.name}}">
 					<ul>
+					   <!-- list of opening hours -->
 					<li><strong>Opening hours:</strong> Monday {{ c.opening_hours }} - {{ c.closing_hours}}</li>
 					<div class="openingtimes">
 					<li>Tuesday {{ c.opening_hours }} - {{ c.closing_hours}}</li> 
 					<li>Wednesday {{ c.opening_hours }} - {{ c.closing_hours}}</li>
 					<li>Thursday {{ c.opening_hours }} - {{ c.closing_hours}}</li>
 					<li>Friday {{ c.opening_hours }} - {{ c.closing_hours}}</li>   
+					   <!-- if c.is_open_wknd display opening hours for saturday and sunday -->
 					<li>{%if c.is_open_wknd %} Saturday: {{c.opening_hours_wknd}} - {{c.closing_hours_wknd}}</li>
 					<li>Sunday: {{c.opening_hours_wknd}} - {{c.closing_hours_wknd}}</li>
+					   <!-- else closed -->
 					<li>{%else%} Saturday: closed</li>
 					<li> Sunday: closed  {% endif  %}</li>
 					</div>
@@ -112,24 +148,29 @@
 			{% endfor %}
 		{% endif %}
 	{% else %}
+	   <!-- if statement for Glasnevin staff only -->
 	{% if request.get_full_path == "/restaurants?campus=glasnevin&staff_only=on" %}
 			<p>No cafes found</p>
 	{% else %}
+	   <!-- if cafes.count == 0 display 'No restaurants found' -->
 	{% if cafes.count == 0 %}
 		<p> No cafes found </p>
 	{% else %}
-		{% if request.get_full_path == "/restaurants?campus=st+pats&weekend=on" %}
-			{% for c in cafes %}
+		   <!-- if statement for St Pats weekend  -->
+		{% if request.get_full_path == "/restaurants?campus=st+pats&weekend=on" %}	
 		<p>No cafes found</p>
-		    {% endfor %}
 		{% else %}
 			{% if cafes %}
+				   <!-- for loop for cafes -->
 				{% for c in cafes %}
 					<p><b>{{ c.name}}</b> located in <b>{{c.location}} </b> {% if r.is_staff_only %} (staff only!) {% endif %}</p>
 					<p>{% if c.avg_rating == 0%}</p>
+					 <!-- if avg_rating == 0, display 'No rating yet' else display image based on rating  -->
 		            <p> No rating yet <img class="ratings" src="static/img/ratings/{{c.avg_rating}}" alt="{{c.avg_rating}}"> {%else%}</p>
 		            <p>{{c.avg_rating}} rating out of {{c.max_rating}} <img class="ratings" src="static/img/ratings/{{c.avg_rating}}" alt="{{c.avg_rating}}"> {% endif %} </p>
+					<!-- display image based on name of cafe ../{{c.name}} -->
 					<img class="location" src="static/img/maps/{{c.name}}" alt="{{c.name}}">
+					  <!-- list of opening hours -->
 					<ul>
 					<li><strong>Opening hours:</strong> Monday {{ c.opening_hours }} - {{ c.closing_hours}}</li>
 					<div class="openingtimes">
@@ -137,8 +178,10 @@
 					<li>Wednesday {{ c.opening_hours }} - {{ c.closing_hours}}</li>
 					<li>Thursday {{ c.opening_hours }} - {{ c.closing_hours}}</li>
 					<li>Friday {{ c.opening_hours }} - {{ c.closing_hours}}</li>   
+					 <!-- if c.is_open_wknd display opening hours for saturday and sunday -->
 					<li>{%if c.is_open_wknd %} Saturday: {{c.opening_hours_wknd}} - {{c.closing_hours_wknd}}</li>
 					<li>Sunday: {{c.opening_hours_wknd}} - {{c.closing_hours_wknd}}</li>
+					 <!-- else closed -->
 					<li>{%else%}<font color="red"> Saturday: closed</font> </li>
 					<li><font color="red">Sunday: closed  </font>{% endif  %}</li>
 					</div>

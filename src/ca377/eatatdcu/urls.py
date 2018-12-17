@@ -2,6 +2,7 @@ from django.conf.urls import url
 
 from . import views
 app_name = 'eatatdcu'
+# url patterns for the website
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^restaurants$', views.restaurants, name='restaurants'),

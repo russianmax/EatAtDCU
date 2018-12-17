@@ -1,17 +1,21 @@
+<!-- extending the template.html onto specials.html -->
 {% extends "eatatdcu/template.html" %}
 
 {% block content %}
+<!-- error handling -->
 {% if error %}
    <b>An error has occurred</b>: {{ error }}
+
 {% else %}
     <p>{{date}}</p>
 	
 	<p>Today's special in  the  <b>{{restaurant_name }}</b>  is: <b>{{ daily_special }}</b></p>
-
     {% load staticfiles %}
+	<!-- image for every special available, ../{{daily_special}} -->
     <img class="specials" src="/static/img/specials/{{ daily_special }}" alt="{{ daily_special }}"><br></br>
 {% endif %}
 
+<!--  JavaScript function so users can go back to the previous page -->
 <div class="goback">
 <button  onclick="goBack()">Go back to the restaurants page</button>
 </div>
