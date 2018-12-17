@@ -16,9 +16,12 @@ To run locally, install
 
 Now, clone my repository, it can be found at: https://gitlab.computing.dcu.ie/maksimk2/2019-ca377-EatAtDCU.git
 In the terminal, do the following:
-* cd < where you want to clone the project > *
-* git clone https://gitlab.computing.dcu.ie/maksimk2/2019-ca377-EatAtDCU.git*
-* cd 2019-ca377-maksimk2-EatAtDCU/src/ca377 *
-* python3/python manage.py makemigrations *
-* python3/python manage.py migrate *
-* python3/python manage.py runserver *
+```
+cd < where you want to clone the project > 
+git clone https://gitlab.computing.dcu.ie/maksimk2/2019-ca377-EatAtDCU.git*
+cd 2019-ca377-maksimk2-EatAtDCU/src/ca377 
+python3/python manage.py makemigrations 
+python3/python manage.py migrate 
+python3/python manage.py runserver 
+
+```
