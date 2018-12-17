@@ -80,7 +80,28 @@ application = get_wsgi_application()
 ```
 ./manage.py makemigrations
 " " 		migrate
-" "			shell
+" "		shell
 import load_db_data
 ```
-14. Check if it works: www.yourusername.pythonanwhere.come
+14. Setup the ROOT for all of the static files
+```
+STATIC_ROOT = "	/home/yourusername/src/ca377/eatatdcu/static/"
+```
+15. Reload the website and you should be good to go: 
+www.yourusername.pythonanwhere.com
+
+
+## Running tests
+You can test your code by running the tests in
+```
+src/ca377/eatatdcu/tests.py
+```
+It can done by running the following commands
+``` 
+cd src/ca377
+python3/python manage.py test eatatdcu
+```
+
+## References
+Jennifer Foster, jennifer.foster@dcu.ie
+Suzanne Little: suzanne.little@dcu.ie
